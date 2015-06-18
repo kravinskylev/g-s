@@ -1,4 +1,3 @@
-// find template and compile it
 $(document).ready(function() {
 var templateSource = document.getElementById('results-template').innerHTML,
     template = Handlebars.compile(templateSource),
@@ -16,7 +15,7 @@ var fetchTracks = function (albumId, callback) {
 };
 
 var searchAlbums = function (query) {
-    $.ajax({
+    return $.ajax({
         url: 'https://api.spotify.com/v1/search',
         data: {
             q: query,
@@ -52,9 +51,21 @@ results.addEventListener('click', function (e) {
     }
 });
 
+
 document.getElementById('search-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    searchAlbums(document.getElementById('query').value);
+    searchAlbums(document.getElementById('query').value)
+      .then(function(success){
+      document.getElementById('results').addEventListener('click', function () {
+      var accessToken = 'PcqCGSGsDgsPl57ftML4D2Rpq9SQgp4wgQEAdQw4UT7M69RTWJQi3dz_9eU1pr5F';
+      var query = (document.getElementById('query').value);
+        fetch('https://api.genius.com/search?access_token=' + accessToken + '&q=' + encodeURIComponent(query)).then(function (response) {
+        response.json().then(function (data) {
+          console.log(data);
+        });
+      });
+    });
+      });
 }, false);
 
 });
