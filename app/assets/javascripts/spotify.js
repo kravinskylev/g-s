@@ -38,6 +38,7 @@ results.addEventListener('click', function (e) {
             }
             fetchTracks(target.getAttribute('data-album-id'), function (data) {
                 audioObject = new Audio(data.tracks.items[0].preview_url);
+                console.log(data.tracks.items[0]);
                 audioObject.play();
                 target.classList.add(playingCssClass);
                 audioObject.addEventListener('ended', function () {
@@ -61,7 +62,10 @@ document.getElementById('search-form').addEventListener('submit', function (e) {
       var query = (document.getElementById('query').value);
         fetch('https://api.genius.com/search?access_token=' + accessToken + '&q=' + encodeURIComponent(query)).then(function (response) {
         response.json().then(function (data) {
-          console.log(data);
+          data.response.hits.filter(function(hit) {
+            hit.result.url == true;
+          document.getElementById('url').innerHTML = (hit.result.url);
+          });
         });
       });
     });
