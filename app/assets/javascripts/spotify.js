@@ -72,26 +72,11 @@ $(document).ready(function() {
                             songId = (geniusUrl[0].result.id);
                             //Creating the div and script tags I need to inject into the DOM
                             embedDiv = "<div id='rg_embed_link_" + songId + "' class='rg_embed_link'></div> ";
-                            embedScript = "<script crossorigin src='//genius.com/songs/" + songId + "/embed.js'></script>";
-                            embedGenius = embedDiv + embedScript;
-                            //This is what breaks it: embedGenius is calling an external js file that uses document.write
-                            $(".embed").append(embedGenius);
-
-                            //Other miscellaneous attempts at fixing this:
-                            //$('body').append(embedDiv)
-                            //console.log(embedGenius);
-
-                            //attempting to circumvent CORS restrictions
-                            //var foo = function(src) {
-                            //var script = document.createElement('script');
-                            //script.type = "text/javascript";
-                            //script.src = src;
-                            //script.async = false;
-                            //document.getElementsByTagName('head')[0].appendChild(script);
-                            //};
-                            //foo('//genius.com/songs/177832/embed.js')
-                            //console.log(eval(embedGenius));
-                            //console.log($(".embed").innerHTML);
+                            embedJS = "http://genius.com/songs/" + songId + "/embed.js"
+                            $(".embed").append(jQuery.get(embedJS));
+                            $('.embed').append(embedDiv);
+                            //Attempting to make lyrics popup instead of override page
+                            $(".embed").showModal();
                         });
                     });
                 });
