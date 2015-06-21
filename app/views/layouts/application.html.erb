@@ -2,32 +2,36 @@
 <html>
 <head>
   <title>Geniusfy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application'%>
+  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script type="text/javascript" src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 </head>
+
 <body>
-<div id="url">
-</div>
+
 <div class="container centered">
   <h1 class="helvetica">
     <span id="genius">GENIUS</span>
     <span id="x">X</span>
     <span id="spotify">SPOTIFY</span>
   </h1>
+<div class="embed" style="color:white;">HELLO</div>
+
     <p id="tag">The best of both worlds.</p>
     <form id="search-form">
-        <input type="text" id="query" value="" class="form-control" placeholder="Type an Artist Name"/>
+        <input type="text" id="query" value="" class="form-control" placeholder="Type an Artist's Name"/>
         <input type="submit" id="search" class="btn btn-primary" value="Search" />
     </form>
     <div id="results"></div>
 </div>
 <script id="results-template" type="text/x-handlebars-template">
     {{#each albums.items}}
-    <div style="background-image:url({{images.0.url}})" data-album-id="{{id}}" class="cover"></div>
+    <span id="embedded"><div style="background-image:url({{images.0.url}})" data-album-id="{{id}}" class="cover"></div></span>
     {{/each}}
 </script>
-<%= yield %>
 
+<%= yield %>
 </body>
 </html>

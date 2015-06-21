@@ -72,3 +72,8 @@ body {
 .helvetica {
   font-family: helvetica;
 }
+
+.rg_embed_link {
+  color: red;
+  text-align: center;
+}
