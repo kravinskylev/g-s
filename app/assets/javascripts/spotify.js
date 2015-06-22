@@ -74,9 +74,11 @@ $(document).ready(function() {
                             embedDiv = "<div id='rg_embed_link_" + songId + "' class='rg_embed_link'></div> ";
                             embedJS = "http://genius.com/songs/" + songId + "/embed.js"
                             $(".embed").append(jQuery.get(embedJS));
-                            $('.embed').append(embedDiv);
+                            $(".embed").append(embedDiv);
+                            //console.log(embedJS);
+                            //console.log(embedDiv);
                             //Attempting to make lyrics popup instead of override page
-                            $(".embed").showModal();
+                            //$(".embed").showModal();
                         });
                     });
                 });

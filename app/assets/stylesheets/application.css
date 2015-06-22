@@ -19,6 +19,7 @@ body {
     background-image: url('hand.jpg');
     background-size:100%,100%;
 }
+
 #search-form, .form-control {
     margin-bottom: 20px;
 }
@@ -73,7 +74,8 @@ body {
   font-family: helvetica;
 }
 
-.rg_embed_link {
-  color: red;
+.rg_embed {
   text-align: center;
+  background-image: url('hand.jpg');
+  color: white;
 }
