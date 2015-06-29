@@ -75,10 +75,6 @@ $(document).ready(function() {
                             embedJS = "http://genius.com/songs/" + songId + "/embed.js"
                             $(".embed").append(jQuery.get(embedJS));
                             $(".embed").append(embedDiv);
-                            //console.log(embedJS);
-                            //console.log(embedDiv);
-                            //Attempting to make lyrics popup instead of override page
-                            //$(".embed").showModal();
                         });
                     });
                 });
